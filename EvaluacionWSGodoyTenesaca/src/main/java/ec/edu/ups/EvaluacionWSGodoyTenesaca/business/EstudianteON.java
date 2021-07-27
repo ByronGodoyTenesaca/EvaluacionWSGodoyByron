@@ -16,4 +16,10 @@ public class EstudianteON {
 		
 		daoEstudiante.actualizar(e);
 	}
+	
+	public Estudiante buscarEstudiante(String cedula) {
+		Estudiante es=daoEstudiante.buscarEstudiante(cedula);
+		return es;
+		
+	}
 }

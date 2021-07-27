@@ -20,21 +20,19 @@ public class TituloDAO {
 		em.persist(t);
 	}
 	
-	public Titulo buscarT(int codigo) {
+	public Titulo buscarT(String nombre) {
 		
-		Titulo t=em.find(Titulo.class,codigo);
+		Titulo t=em.find(Titulo.class,nombre);
 		
 		return t;
 	}
 	
-	public List<Estudiante> buscarTitulos(Titulo t) {
+	public List<Object[]> buscarTitulos(String t) {
 		
-		String sql="SELECT e FROM Estudiante es WHERE titulo like ?1";
-		Query query= em.createQuery(sql, Estudiante.class);
+		String sql="SELECT * FROM public.estudiante,public.titulo where titulo.titulo like '%"+t+"%' and estudiante.titulo_codigo=titulo.codigo";
+		Query query= em.createNativeQuery(sql);
 		
-		query.setParameter(1, t);
-		
-		List<Estudiante> est=query.getResultList();
+		List<Object[]> est=query.getResultList();
 		
 		return est;
 	}

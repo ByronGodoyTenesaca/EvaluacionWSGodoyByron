@@ -16,4 +16,9 @@ public class EstudianteDAO {
 	public void actualizar(Estudiante e) {
 		em.merge(e);
 	}
+	
+	public Estudiante buscarEstudiante(String cedula) {
+		Estudiante es=em.find(Estudiante.class, cedula);
+		return es;
+	}
 }

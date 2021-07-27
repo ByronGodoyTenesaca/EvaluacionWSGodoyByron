@@ -19,9 +19,14 @@ public class TituloON {
 		daoTitulo.ingresarTitulo(t);
 	}
 	
-	public List<Estudiante> buscarTitulo(Titulo t){
+	public List<Object[]> buscarTitulo(String t){
 		
-		List<Estudiante> es=daoTitulo.buscarTitulos(t);
+		List<Object[]> es=daoTitulo.buscarTitulos(t);
 		return es;
+	}
+	
+	public Titulo buscarT(String nombre) {
+		Titulo t=daoTitulo.buscarT(nombre);
+		return t;
 	}
 }
